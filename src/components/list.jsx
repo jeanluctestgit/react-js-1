@@ -13,7 +13,9 @@ const List = (props) => {
           chick={chick}
           handleDelete={() => props.handleDelete(index)}
         />
-      ))}
+      )).filter((chick , index) => {
+          return index <= 5
+      })}
     </ul>
   );
 };

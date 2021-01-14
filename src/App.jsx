@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Card from "./components/card";
 import List from "./components/list";
 import NewChickForm from "./components/newChickForm";
+import Navigation from "./components/Navigation";
 
 class App extends Component {
   state = {
@@ -38,6 +39,11 @@ class App extends Component {
             handleDelete={this.handleDeleteListItem}
           />
           <hr />
+          <Navigation
+            onChickChangeNext={this.handleChickChangeNext}
+            onChickChangePrevious={this.handleChickChangePrevious}
+          />
+          <hr />
           <Card
             current={this.state.current}
             chick={this.state.chicken[this.state.current]}
@@ -67,11 +73,19 @@ class App extends Component {
     this.setState({ chicken: chicken });
   };
 
-  handleChickChange = () => {
+  handleChickChangeNext = () => {
     const current =
       this.state.current === this.state.chicken.length - 1
         ? 0
         : this.state.current + 1;
+    this.setState({ current: current });
+  };
+
+  handleChickChangePrevious = () => {
+    const current =
+      this.state.current === 0
+        ? this.state.chicken.length - 1
+        : this.state.current - 1;
     this.setState({ current: current });
   };
 }
