@@ -28,8 +28,8 @@ class Root extends Component {
         />
         <hr />
         <Navigation
-          onChickChangeNext={this.handleChickChangeNext}
-          onChickChangePrevious={this.handleChickChangePrevious}
+          onProductChangeNext={this.handleProductChangeNext}
+          onProductChangePrevious={this.handleProductChangePrevious}
         />
         <hr />
         <Card
@@ -44,33 +44,33 @@ class Root extends Component {
   handleSearchProduct = (product) => {
     
     const current = this.state.products.findIndex( p => p.productName === product);
-    const numPage = Math.floor(this.state.current / 5);
+    const numPage = Math.floor(current / 5);
     this.setState({ current: current, numPage: numPage });
   }
 
-  handleChickChangeNext = () => {
+  handleProductChangeNext = () => {
     const current =
       this.state.current === this.state.products.length - 1
         ? 0
         : this.state.current + 1;
 
-    const numPage = Math.floor(this.state.current / 5);
+    const numPage = Math.floor(current / 5);
     this.setState({ current: current, numPage: numPage });
   };
 
-  handleChickChangePrevious = () => {
+  handleProductChangePrevious = () => {
     const current =
       this.state.current === 0
         ? this.state.products.length - 1
         : this.state.current - 1;
-    const numPage = Math.floor(this.state.current / 5);
+    const numPage = Math.floor(current / 5);
     this.setState({ current: current, numPage: numPage });
   };
 
   handleAddProduct = () => {  
     const numItem = this.state.numItem + 1;
 
-    const total = this.state.total + parseFloat(this.state.products[this.state.current].productPrice.toFixed(2));
+    const total = Math.round((this.state.total + this.state.products[this.state.current].productPrice) * 100) /100;
 
     this.setState({numItem : numItem , total : total});
   }

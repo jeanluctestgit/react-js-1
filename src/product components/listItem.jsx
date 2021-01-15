@@ -8,7 +8,7 @@ const ListItem = (props) => {
 
   return (
     <li className={getListClasses(props.index)}>
-      <span>{props.product.productName}</span>
+      <span>{props.product.productName} ({props.product.productCategory})</span>
     </li>
   );
 };

@@ -2,13 +2,13 @@ import React from 'react'
 
 export default function Navigation(props) {
 
-    const { onChickChangePrevious, onChickChangeNext } = props;
+    const { onProductChangePrevious, onProductChangeNext } = props;
     return (
         <div>
-            <a href="#" onClick={onChickChangePrevious} className="btn btn-primary">
+            <a href="#" onClick={onProductChangePrevious} className="btn btn-primary">
           Previous
         </a>
-            <a href="#" onClick={onChickChangeNext} className="btn btn-primary">
+            <a href="#" onClick={onProductChangeNext} className="btn btn-primary float-right">
           Next
         </a>
         </div>
